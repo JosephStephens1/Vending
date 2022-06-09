@@ -41,7 +41,12 @@ public class VendingItems {
         this.itemType = itemType;
     }
 
-
+    public VendingItems( String buttonNumber, String itemName,BigDecimal price,String itemType){
+        this.buttonNumber = buttonNumber;
+        this.itemName = itemName;
+        this.price = price;
+        this.itemType = itemType;
+    }
 
 
 
