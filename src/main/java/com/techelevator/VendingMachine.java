@@ -30,7 +30,7 @@ private Map<String,VendingItems> items = new HashMap<>();
                 String itemName = itemList[1];
                 String price = itemList[2];
                 String itemType = itemList[3];
-                String quantity = itemList[4];
+                String quantity = "5";
 
 
                 items.put(buttonNumber,new VendingItems(buttonNumber,itemName, new BigDecimal (price),itemType,  Integer.parseInt(quantity)));
