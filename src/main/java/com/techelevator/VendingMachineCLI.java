@@ -27,7 +27,7 @@ public class VendingMachineCLI {
 				// display vending machine items
 
 				for(Map.Entry<String, VendingItems> products: vendingMachine.getItems().entrySet()){
-					System.out.println(products.getValue().getItemName());
+					System.out.println(products.getKey() + " " +  products.getValue().getItemName() + " $" + products.getValue().getPrice() + " Items Remaining: " + products.getValue().getQuantity() );
 
 				}
 
