@@ -3,36 +3,50 @@ package com.techelevator;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class VendingMachine {
 
+private Map<String,VendingItems> items = new HashMap<>();
 
+    Scanner input = new Scanner("C:\\Users\\Student\\workspace\\nlr-8-module-1-capstone-orange-team-9\\vendingmachine.csv");
+
+    //  public VendingMachine(String buttonNumber, String itemName, BigDecimal price, String itemType) {
+    //    super(buttonNumber, itemName, price, itemType);
+    //}
 
     // Constructor
-    public static void main(String[] args) throws FileNotFoundException {
+    public VendingMachine() {
 
-     try( Scanner inventoryInput = new Scanner("C:\\Users\\Student\\workspace\\nlr-8-module-1-capstone-orange-team-9\\vendingmachine.csv"))
-     {
-         while (inventoryInput.hasNextLine())
-         {
-             String currentLine = inventoryInput.nextLine();
-             String[] itemList = currentLine.split("|");
-             String buttonNumber = itemList[0];
-             String itemName = itemList[1];
-             String price = itemList[2];
-             String itemType = itemList[3];
-            // String quantityNumber = itemList[4];
-         }
+        try (Scanner inventoryInput = new Scanner("C:\\Users\\Student\\workspace\\nlr-8-module-1-capstone-orange-team-9\\vendingmachine.csv")) {
+            while (inventoryInput.hasNextLine()) {
+                String currentLine = inventoryInput.nextLine();
+                String[] itemList = currentLine.split("\\|");
+                String buttonNumber = itemList[0];
+                String itemName = itemList[1];
+                String price = itemList[2];
+                String itemType = itemList[3];
+                String quantity = itemList[4];
 
 
-     }
+                items.put(buttonNumber,new VendingItems(buttonNumber,itemName, new BigDecimal (price),itemType,  Integer.parseInt(quantity)));
 
+            }
+        }
 
     }
-
-
-
+  public Map<String, VendingItems> getItems(){
+        return items;
+  }
 
 }
+
+
+
+
+
+
