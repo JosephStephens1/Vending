@@ -10,6 +10,9 @@ public class VendingItems  {
     private String itemType;
     private int quantity = 5;
 
+
+
+
     public String getButtonNumberNumber(){
         return buttonNumber;
     }
@@ -50,12 +53,12 @@ public class VendingItems  {
         this.quantity = quantity;
     }
 
-    public VendingItems( String buttonNumber, String itemName,BigDecimal price,String itemType,int quantity){
+    public VendingItems( String buttonNumber, String itemName,BigDecimal price,String itemType, int quantity){
         this.buttonNumber = buttonNumber;
         this.itemName = itemName;
         this.price = price;
         this.itemType = itemType;
-        this.quantity = quantity;
+       this.quantity = quantity;
     }
 
 
@@ -65,3 +68,4 @@ public class VendingItems  {
 
 
 }
+  //
