@@ -14,10 +14,10 @@ public class VendingMachine {
 
 private BigDecimal currentMoney = new BigDecimal("0.00");
 
-   public static final String ONE = "One Dollar Bill";
-   public static final String FIVE = "Five Dollar BIll";
-   public static final String TEN = "Ten Dollar Bill";
-   public static final String TWENTY = "Twenty Dollar Bill";
+   public static final String ONE = "ONE";
+   public static final String FIVE = "FIVE";
+   public static final String TEN = "TEN";
+   public static final String TWENTY = "TWENTY";
 
    private String dollarBill;
 
@@ -78,7 +78,7 @@ private BigDecimal currentMoney = new BigDecimal("0.00");
 
         //Adds balance total
         currentMoney = currentMoney.add(balance);
-
+        return currentMoney;
     }
 
     public BigDecimal getCurrentMoney()

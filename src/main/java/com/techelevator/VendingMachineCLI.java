@@ -50,18 +50,18 @@ public class VendingMachineCLI {
 				Scanner userInput = new Scanner(System.in);
 				String transactionChoice = userInput.nextLine();
 
-				if(transactionChoice == "1")
-				{
-					System.out.println("Please input money");
+				if(transactionChoice.equals("1")) {
+					System.out.println("Please input money:  ONE , FIVE , TEN , TWENTY ");
 					String feedMoney = userInput.nextLine();
 
 					vendingMachine.moneyFeed(feedMoney);
+					System.out.println("New Balance is " + vendingMachine.getCurrentMoney());
 				}
-				else if( transactionChoice == "2")
+				else if( transactionChoice.equals("2"))
 				{
 					System.out.println("Select item");
 				}
-				else if( transactionChoice == "3")
+				else if( transactionChoice.equals("3"))
 				{
 
 				}
