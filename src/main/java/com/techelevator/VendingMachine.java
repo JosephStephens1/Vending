@@ -12,7 +12,11 @@ import java.util.Scanner;
 
 public class VendingMachine {
 
-private Map<String,VendingItems> items = new HashMap<>();
+//private BigDecimal Current
+
+
+
+    private Map<String,VendingItems> items = new HashMap<>();
 
     Scanner input = new Scanner("C:\\Users\\Student\\workspace\\nlr-8-module-1-capstone-orange-team-9\\vendingmachine.csv");
 
@@ -45,6 +49,8 @@ private Map<String,VendingItems> items = new HashMap<>();
   public Map<String, VendingItems> getItems(){
         return items;
   }
+
+
 
 }
 
