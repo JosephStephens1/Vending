@@ -2,7 +2,9 @@ package com.techelevator;
 
 import com.techelevator.view.Menu;
 
+import java.math.BigDecimal;
 import java.util.Map;
+import java.util.Scanner;
 
 public class VendingMachineCLI {
 
@@ -32,13 +34,41 @@ public class VendingMachineCLI {
 				}
 
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
+
+				// Initialize Money Feed
+				BigDecimal balance = new BigDecimal( "0.00");
+
+
 				// do purchase
 				System.out.println("");
-				System.out.println("Current Money Provided: ");
+				System.out.println("Current Money Provided: " + balance);
 				System.out.println("");
 				System.out.println( "1)" + " Feed Money");
 				System.out.println( "2)" + " Select Product");
 				System.out.println( "3)" + " Finish Transaction");
+
+				// Get User Input
+				Scanner userInput = new Scanner(System.in);
+				String transactionChoice = userInput.nextLine();
+
+				if(transactionChoice == "1")
+				{
+					System.out.println("Please input money");
+					String feedMoney = userInput.nextLine();
+					balance = new BigDecimal(feedMoney);
+				}
+				else if( transactionChoice == "2")
+				{
+					System.out.println("Select item");
+				}
+				else if( transactionChoice == "3")
+				{
+
+				}
+				else
+				{
+					System.out.println("Please enter a valid choice!");
+				}
 
 			}
 		}
