@@ -14,7 +14,12 @@ public class VendingMachine {
 
 private BigDecimal currentMoney;
 
+   public static final String ONE = "One Dollar Bill";
+   public static final String FIVE = "Five Dollar BIll";
+   public static final String TEN = "Ten Dollar Bill";
+   public static final String TWENTY = "Twenty Dollar Bill";
 
+   private String dollarBill;
 
     private Map<String,VendingItems> items = new HashMap<>();
 
@@ -55,7 +60,24 @@ private BigDecimal currentMoney;
         return items;
   }
 
+  //Method MoneyFeed
 
+    // Initialize Money Feed
+    public BigDecimal moneyFeed() {
+        BigDecimal balance = new BigDecimal("0.00");
+
+        if(dollarBill.equals(ONE)){
+            balance = new BigDecimal("1.00");
+        }else if (dollarBill.equals(FIVE)){
+            balance = new BigDecimal("5.00");
+        } else if (dollarBill.equals(TEN)) {
+            balance = new BigDecimal("10.00");
+        }else if (dollarBill.equals(TWENTY)){
+            balance = new BigDecimal("20.00");
+        }
+
+        return balance;
+    }
 
 }
 
