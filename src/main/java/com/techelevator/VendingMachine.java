@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class VendingMachine {
 
-//private BigDecimal Current
+private BigDecimal currentMoney;
 
 
 
@@ -38,7 +38,12 @@ public class VendingMachine {
 
 
 
-                items.put(buttonNumber,new VendingItems(buttonNumber,itemName, new BigDecimal (price),itemType,  5));
+                items.put(buttonNumber, new VendingItems(buttonNumber, itemName, new BigDecimal(price), itemType, 5) {
+                    @Override
+                    public String getMessage() {
+                        return null;
+                    }
+                });
 
             }
         }

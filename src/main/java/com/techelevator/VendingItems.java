@@ -2,7 +2,7 @@ package com.techelevator;
 
 import java.math.BigDecimal;
 
-public class VendingItems  {
+public abstract   class VendingItems  {
 
     private String buttonNumber;
     private String itemName;
@@ -10,7 +10,7 @@ public class VendingItems  {
     private String itemType;
     private int quantity = 5;
 
-
+    public abstract String getMessage();
 
 
     public String getButtonNumberNumber(){
