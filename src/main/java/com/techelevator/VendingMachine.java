@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class VendingMachine {
 
-private BigDecimal currentMoney;
+private BigDecimal currentMoney = new BigDecimal("0.00");
 
    public static final String ONE = "One Dollar Bill";
    public static final String FIVE = "Five Dollar BIll";
@@ -63,7 +63,7 @@ private BigDecimal currentMoney;
   //Method MoneyFeed
 
     // Initialize Money Feed
-    public BigDecimal moneyFeed() {
+    public BigDecimal moneyFeed(String dollarBill) {
         BigDecimal balance = new BigDecimal("0.00");
 
         if(dollarBill.equals(ONE)){
@@ -76,7 +76,14 @@ private BigDecimal currentMoney;
             balance = new BigDecimal("20.00");
         }
 
-        return balance;
+        //Adds balance total
+        currentMoney = currentMoney.add(balance);
+
+    }
+
+    public BigDecimal getCurrentMoney()
+    {
+        return currentMoney;
     }
 
 }

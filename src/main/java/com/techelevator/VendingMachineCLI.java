@@ -35,13 +35,12 @@ public class VendingMachineCLI {
 
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 
-				// Initialize Money Feed
-				BigDecimal balance = new BigDecimal( "0.00");
+
 
 
 				// do purchase
 				System.out.println("");
-				System.out.println("Current Money Provided: " + balance);
+				System.out.println("Current Money Provided: " + vendingMachine.getCurrentMoney());
 				System.out.println("");
 				System.out.println( "1)" + " Feed Money");
 				System.out.println( "2)" + " Select Product");
@@ -55,7 +54,8 @@ public class VendingMachineCLI {
 				{
 					System.out.println("Please input money");
 					String feedMoney = userInput.nextLine();
-					balance = new BigDecimal(feedMoney);
+
+					vendingMachine.moneyFeed(feedMoney);
 				}
 				else if( transactionChoice == "2")
 				{
