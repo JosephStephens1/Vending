@@ -74,6 +74,18 @@ private BigDecimal currentMoney = new BigDecimal("0.00");
             balance = new BigDecimal("10.00");
         }else if (dollarBill.equals(TWENTY)){
             balance = new BigDecimal("20.00");
+        }else if(dollarBill.equals("1")){
+            balance = new BigDecimal("1.00");
+        }else if(dollarBill.equals("5")){
+            balance = new BigDecimal("5.00");
+        }else if(dollarBill.equals("10")){
+            balance = new BigDecimal("10.00");
+        }else if(dollarBill.equals("20")){
+            balance = new BigDecimal("20.00");
+        }
+
+        else {
+            System.out.println("Sorry input not accepted. Please input One, Five, Ten, or Twenty");
         }
 
         //Adds balance total

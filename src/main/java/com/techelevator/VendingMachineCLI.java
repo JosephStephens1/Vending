@@ -19,6 +19,8 @@ public class VendingMachineCLI {
 	}
 
 	public void run() {
+		System.out.println("");
+		System.out.println("Welcome to the Umbrella Corp. Vendo-Matic 800");
 
 		VendingMachine vendingMachine = new VendingMachine();
 
@@ -52,11 +54,14 @@ public class VendingMachineCLI {
 
 				if(transactionChoice.equals("1")) {
 					System.out.println("Please input money:  ONE , FIVE , TEN , TWENTY ");
-					String feedMoney = userInput.nextLine();
+					String feedMoney = userInput.nextLine().toUpperCase();
 
-					vendingMachine.moneyFeed(feedMoney);
+
+					vendingMachine.moneyFeed(feedMoney.toUpperCase());
 					System.out.println("New Balance is " + vendingMachine.getCurrentMoney());
-				}
+					}
+
+
 				else if( transactionChoice.equals("2"))
 				{
 					System.out.println("Select item");
