@@ -20,7 +20,11 @@ public class VendingMachine {
     public static final String TWENTY = "TWENTY";
 
     private String dollarBill;
-    private String selectedProductKey;
+    Scanner userInput = new Scanner(System.in);
+   // private String selectedProductKey;
+
+
+
 
     private Map<String, VendingItems> items = new HashMap<>();
 
@@ -98,12 +102,18 @@ public class VendingMachine {
 
     // Purchase Display Item List
 
-    public String productDisplay(String selectedProductKey) {
-        
+    public String getProductDisplay() {
+
+        System.out.println("");
+
 
         for (Map.Entry<String, VendingItems> products : getItems().entrySet()) {
             System.out.println(products.getKey() + " " + products.getValue().getItemName() + " $" + products.getValue().getPrice());
         }
+
+        System.out.println("");
+        System.out.print("Please choose a product >>> ");
+        String selectedProductKey = userInput.nextLine();
 
 
         for (Map.Entry<String, VendingItems> products : getItems().entrySet()) {
@@ -116,6 +126,8 @@ public class VendingMachine {
             }
 
         }
+        return null;
+
     }
 
 
