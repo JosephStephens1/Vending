@@ -120,6 +120,9 @@ public class VendingMachine {
 
             if (selectedProductKey.equals(products.getKey())) {
                 System.out.println(products.getValue().getItemName() + " $" + products.getValue().getPrice());
+                int updatedQuantity = products.getValue().getQuantity();
+                updatedQuantity--;
+                System.out.println( updatedQuantity);
                 break;
             } else if (selectedProductKey.equalsIgnoreCase("cancel")) {
                 break;
@@ -129,6 +132,9 @@ public class VendingMachine {
         return null;
 
     }
+
+
+
 
 
 }

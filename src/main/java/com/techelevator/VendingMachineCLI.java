@@ -66,7 +66,7 @@ public class VendingMachineCLI {
 
 				else if( transactionChoice.equals("2"))
 				{
-					
+
 					vendingMachine.getProductDisplay();
 
 				}
