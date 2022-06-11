@@ -47,6 +47,8 @@ public class VendingMachineCLI {
 				System.out.println( "1)" + " Feed Money");
 				System.out.println( "2)" + " Select Product");
 				System.out.println( "3)" + " Finish Transaction");
+				System.out.println(" ");
+				System.out.print("Please choose an option >>> ");
 
 				// Get User Input
 				Scanner userInput = new Scanner(System.in);
@@ -64,7 +66,32 @@ public class VendingMachineCLI {
 
 				else if( transactionChoice.equals("2"))
 				{
-					System.out.println("Select item");
+					System.out.println("");
+
+					for(Map.Entry<String,VendingItems> products : vendingMachine.getItems().entrySet()) {
+						System.out.println(products.getKey() + " " + products.getValue().getItemName());
+					}
+
+
+					System.out.println(" ");
+					System.out.print("Please select a product >>> ");
+					String selectedProductKey = userInput.nextLine();
+
+
+					for(Map.Entry<String,VendingItems> products : vendingMachine.getItems().entrySet())
+					{
+
+						if(selectedProductKey.equals(products.getKey()))
+						{
+							System.out.println(products.getValue().getItemName());
+							break;
+						}
+						else if (selectedProductKey.equalsIgnoreCase("cancel"))
+						{
+							break;
+						}
+
+					}
 				}
 				else if( transactionChoice.equals("3"))
 				{
