@@ -69,7 +69,7 @@ public class VendingMachineCLI {
 					System.out.println("");
 
 					for(Map.Entry<String,VendingItems> products : vendingMachine.getItems().entrySet()) {
-						System.out.println(products.getKey() + " " + products.getValue().getItemName());
+						System.out.println(products.getKey() + " " + products.getValue().getItemName() + " $" + products.getValue().getPrice());
 					}
 
 
@@ -83,7 +83,7 @@ public class VendingMachineCLI {
 
 						if(selectedProductKey.equals(products.getKey()))
 						{
-							System.out.println(products.getValue().getItemName());
+							System.out.println(products.getValue().getItemName() + " $" + products.getValue().getPrice());
 							break;
 						}
 						else if (selectedProductKey.equalsIgnoreCase("cancel"))
