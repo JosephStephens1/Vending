@@ -12,16 +12,17 @@ import java.util.Scanner;
 
 public class VendingMachine {
 
-private BigDecimal currentMoney = new BigDecimal("0.00");
+    private BigDecimal currentMoney = new BigDecimal("0.00");
 
-   public static final String ONE = "ONE";
-   public static final String FIVE = "FIVE";
-   public static final String TEN = "TEN";
-   public static final String TWENTY = "TWENTY";
+    public static final String ONE = "ONE";
+    public static final String FIVE = "FIVE";
+    public static final String TEN = "TEN";
+    public static final String TWENTY = "TWENTY";
 
-   private String dollarBill;
+    private String dollarBill;
+    private String selectedProductKey;
 
-    private Map<String,VendingItems> items = new HashMap<>();
+    private Map<String, VendingItems> items = new HashMap<>();
 
     Scanner input = new Scanner("C:\\Users\\Student\\workspace\\nlr-8-module-1-capstone-orange-team-9\\vendingmachine.csv");
 
@@ -42,7 +43,6 @@ private BigDecimal currentMoney = new BigDecimal("0.00");
                 String itemType = itemList[3];
 
 
-
                 items.put(buttonNumber, new VendingItems(buttonNumber, itemName, new BigDecimal(price), itemType, 5) {
                     @Override
                     public String getMessage() {
@@ -51,40 +51,39 @@ private BigDecimal currentMoney = new BigDecimal("0.00");
                 });
 
             }
-        }
-        catch (FileNotFoundException ex){
+        } catch (FileNotFoundException ex) {
 
         }
     }
-  public Map<String, VendingItems> getItems(){
-        return items;
-  }
 
-  //Method MoneyFeed
+    public Map<String, VendingItems> getItems() {
+        return items;
+    }
+
+
+    //Method MoneyFeed
 
     // Initialize Money Feed
     public BigDecimal moneyFeed(String dollarBill) {
         BigDecimal balance = new BigDecimal("0.00");
 
-        if(dollarBill.equals(ONE)){
+        if (dollarBill.equals(ONE)) {
             balance = new BigDecimal("1.00");
-        }else if (dollarBill.equals(FIVE)){
+        } else if (dollarBill.equals(FIVE)) {
             balance = new BigDecimal("5.00");
         } else if (dollarBill.equals(TEN)) {
             balance = new BigDecimal("10.00");
-        }else if (dollarBill.equals(TWENTY)){
+        } else if (dollarBill.equals(TWENTY)) {
             balance = new BigDecimal("20.00");
-        }else if(dollarBill.equals("1")){
+        } else if (dollarBill.equals("1")) {
             balance = new BigDecimal("1.00");
-        }else if(dollarBill.equals("5")){
+        } else if (dollarBill.equals("5")) {
             balance = new BigDecimal("5.00");
-        }else if(dollarBill.equals("10")){
+        } else if (dollarBill.equals("10")) {
             balance = new BigDecimal("10.00");
-        }else if(dollarBill.equals("20")){
+        } else if (dollarBill.equals("20")) {
             balance = new BigDecimal("20.00");
-        }
-
-        else {
+        } else {
             System.out.println("Sorry input not accepted. Please input One, Five, Ten, or Twenty");
         }
 
@@ -93,13 +92,31 @@ private BigDecimal currentMoney = new BigDecimal("0.00");
         return currentMoney;
     }
 
-    public BigDecimal getCurrentMoney()
-    {
+    public BigDecimal getCurrentMoney() {
         return currentMoney;
     }
 
-    
+    // Purchase Display Item List
 
+    public String productDisplay(String selectedProductKey) {
+        
+
+        for (Map.Entry<String, VendingItems> products : getItems().entrySet()) {
+            System.out.println(products.getKey() + " " + products.getValue().getItemName() + " $" + products.getValue().getPrice());
+        }
+
+
+        for (Map.Entry<String, VendingItems> products : getItems().entrySet()) {
+
+            if (selectedProductKey.equals(products.getKey())) {
+                System.out.println(products.getValue().getItemName() + " $" + products.getValue().getPrice());
+                break;
+            } else if (selectedProductKey.equalsIgnoreCase("cancel")) {
+                break;
+            }
+
+        }
+    }
 
 
 }

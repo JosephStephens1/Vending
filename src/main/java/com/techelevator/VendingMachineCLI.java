@@ -68,30 +68,6 @@ public class VendingMachineCLI {
 				{
 					System.out.println("");
 
-					for(Map.Entry<String,VendingItems> products : vendingMachine.getItems().entrySet()) {
-						System.out.println(products.getKey() + " " + products.getValue().getItemName() + " $" + products.getValue().getPrice());
-					}
-
-
-					System.out.println(" ");
-					System.out.print("Please select a product >>> ");
-					String selectedProductKey = userInput.nextLine();
-
-
-					for(Map.Entry<String,VendingItems> products : vendingMachine.getItems().entrySet())
-					{
-
-						if(selectedProductKey.equals(products.getKey()))
-						{
-							System.out.println(products.getValue().getItemName() + " $" + products.getValue().getPrice());
-							break;
-						}
-						else if (selectedProductKey.equalsIgnoreCase("cancel"))
-						{
-							break;
-						}
-
-					}
 				}
 				else if( transactionChoice.equals("3"))
 				{
