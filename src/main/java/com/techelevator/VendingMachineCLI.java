@@ -54,6 +54,7 @@ public class VendingMachineCLI {
 				Scanner userInput = new Scanner(System.in);
 				String transactionChoice = userInput.nextLine();
 
+
 				if(transactionChoice.equals("1")) {
 					System.out.println("Please input money:  ONE , FIVE , TEN , TWENTY ");
 					String feedMoney = userInput.nextLine().toUpperCase();

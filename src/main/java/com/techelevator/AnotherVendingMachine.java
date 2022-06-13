@@ -1,91 +1,150 @@
+package com.techelevator;
 
- package com.techelevator;
-
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.nio.file.FileAlreadyExistsException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
-    public class AnotherVendingMachine {
+public class AnotherVendingMachine {
 
-        // constants
-        public static final String CHIPS = "Chips";
-        public static final String CANDY = "Candy";
-        public static final String GUM = "Gum";
-        public static final String DRINK = "Drink";
+    private BigDecimal currentMoney = new BigDecimal("0.00");
 
-        private String slotLocation;
-        private String itemName;
-        private String itemType;
+    public static final String ONE = "ONE";
+    public static final String FIVE = "FIVE";
+    public static final String TEN = "TEN";
+    public static final String TWENTY = "TWENTY";
+
+    private String dollarBill;
+    Scanner userInput = new Scanner(System.in);
+    // private String selectedProductKey;
 
 
-        public AnotherVendingMachine(String slotLocation, String itemName, String itemType) {
-            this.slotLocation = slotLocation;
-            this.itemName = itemName;
-            this.itemType = itemType;
+    private Map<String, VendingItems> items = new HashMap<>();
 
-        }
+    Scanner input = new Scanner("C:\\Users\\Student\\workspace\\nlr-8-module-1-capstone-orange-team-9\\vendingmachine.csv");
 
-        //methods:
-        //access modifier, return data type, the name of the method, and parentheses that
-        //will include any parameters that we are passing in
-        public String getItemName() {
-            return itemName;
-        }
+    //  public VendingMachine(String buttonNumber, String itemName, BigDecimal price, String itemType) {
+    //    super(buttonNumber, itemName, price, itemType);
+    //}
 
-        public String getItemType() {
-            return itemType;
-        }
+    // Constructor
+    public AnotherVendingMachine() {
 
-        public String getSlotLocation() {
-            return slotLocation;
-        }
+        try (Scanner inventoryInput = new Scanner(new File("C:\\Users\\Student\\workspace\\nlr-8-module-1-capstone-orange-team-9\\vendingmachine.csv"))) {
+            while (inventoryInput.hasNextLine()) {
+                String currentLine = inventoryInput.nextLine();
+                String[] itemList = currentLine.split("\\|");
+                String buttonNumber = itemList[0];
+                String itemName = itemList[1];
+                String price = itemList[2];
+                String itemType = itemList[3];
 
-        public BigDecimal getRentalPrice() {
 
-            // There are a couple ways to initialize big decimal
-            BigDecimal itemPrice = new BigDecimal("0.00");
-            //BigDecimal price = BigDecimal.valueOf(3.5);
+                items.put(buttonNumber, new VendingItems(buttonNumber, itemName, new BigDecimal(price), itemType, 5) {
+                    @Override
+                    public String getMessage() {
+                        return null;
+                    }
+                });
 
-            if(itemType.equals(CHIPS)) {
-                itemPrice = new BigDecimal("0.99");
-            } else if (itemType.equals(GUM)) {
-                itemPrice = new BigDecimal("2.99");
-            } else if(itemType.equals(CANDY)) {
-                itemPrice = new BigDecimal("1.99");
             }
-            else if(itemType.equals(DRINK)) {
-                itemPrice = new BigDecimal("1.99");
+        } catch (FileNotFoundException ex) {
+
+        }
+    }
+
+    public Map<String, VendingItems> getItems() {
+        return items;
+    }
+
+
+    //Method MoneyFeed
+
+    // Initialize Money Feed
+    public BigDecimal moneyFeed(String dollarBill) {
+        BigDecimal balance = new BigDecimal("0.00");
+
+        if (dollarBill.equals(ONE)) {
+            balance = new BigDecimal("1.00");
+        } else if (dollarBill.equals(FIVE)) {
+            balance = new BigDecimal("5.00");
+        } else if (dollarBill.equals(TEN)) {
+            balance = new BigDecimal("10.00");
+        } else if (dollarBill.equals(TWENTY)) {
+            balance = new BigDecimal("20.00");
+        } else if (dollarBill.equals("1")) {
+            balance = new BigDecimal("1.00");
+        } else if (dollarBill.equals("5")) {
+            balance = new BigDecimal("5.00");
+        } else if (dollarBill.equals("10")) {
+            balance = new BigDecimal("10.00");
+        } else if (dollarBill.equals("20")) {
+            balance = new BigDecimal("20.00");
+        } else {
+            System.out.println("Sorry input not accepted. Please input One, Five, Ten, or Twenty");
+        }
+
+        //Adds balance total
+        currentMoney = currentMoney.add(balance);
+        return currentMoney;
+    }
+
+    public BigDecimal getCurrentMoney() {
+        return currentMoney;
+    }
+
+    // Purchase Display Item List
+    int updatedQuantity = 5;
+    private Map<String, Integer> purchaseTracker = new HashMap<>();
+
+
+    public String getProductDisplay() {
+
+        System.out.println("");
+
+
+        for (Map.Entry<String, VendingItems> products : getItems().entrySet()) {
+            System.out.println(products.getKey() + " " + products.getValue().getItemName() + " $" + products.getValue().getPrice());
+        }
+
+        System.out.println("");
+        System.out.print("Please choose a product >>> ");
+        String selectedProductKey = userInput.nextLine();
+
+
+        for (Map.Entry<String, VendingItems> products : getItems().entrySet()) {
+
+
+            if (selectedProductKey.equals(products.getKey()) && updatedQuantity >= 2) {
+
+                System.out.println(products.getValue().getItemName() + " $" + products.getValue().getPrice());
+                updatedQuantity--;
+                //System.out.println(updatedQuantity);
+
+                purchaseTracker.put(selectedProductKey, updatedQuantity);
+                System.out.println(purchaseTracker);
+
+                break;
+            } else if (selectedProductKey.equals(products.getKey()) && updatedQuantity == 0) {
+                System.out.println("SOLD OUT");
+                break;
+            } else if (selectedProductKey.equalsIgnoreCase("cancel")) {
+                break;
             }
 
 
-
-            return itemPrice;
-
-            // EXAMPLE: force how many decimals to keep (2) and how to round
-            // return price.setScale(2, RoundingMode.UP);
         }
-
-        public BigDecimal getLateFee(int daysLate) {
-            BigDecimal lateFee = new BigDecimal("0.00");
-
-            if(daysLate == 0) {
-                //do nothing
-            } else if (daysLate == 1) {
-                lateFee = new BigDecimal("1.99");
-            } else if(daysLate ==2) {
-                lateFee = new BigDecimal("3.99");
-            } else if (daysLate >= 3) {
-                lateFee = new BigDecimal("19.99");
-            }
-
-            return lateFee;
-        }
-
-        @Override
-        public String toString() {
-            return "MOVIE - " + itemName + " - " + itemType + " " + getRentalPrice();
-        }
+        return null;
 
     }
+
+
+}
 
 
 
