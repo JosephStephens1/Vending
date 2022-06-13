@@ -21,9 +21,7 @@ public class VendingMachine {
 
     private String dollarBill;
     Scanner userInput = new Scanner(System.in);
-   // private String selectedProductKey;
-
-
+    // private String selectedProductKey;
 
 
     private Map<String, VendingItems> items = new HashMap<>();
@@ -101,6 +99,9 @@ public class VendingMachine {
     }
 
     // Purchase Display Item List
+    int updatedQuantity = 5;
+    private Map<String, Integer> purchaseTracker = new HashMap<>();
+
 
     public String getProductDisplay() {
 
@@ -118,15 +119,24 @@ public class VendingMachine {
 
         for (Map.Entry<String, VendingItems> products : getItems().entrySet()) {
 
-            if (selectedProductKey.equals(products.getKey())) {
+
+            if (selectedProductKey.equals(products.getKey()) && updatedQuantity >= 2) {
+
                 System.out.println(products.getValue().getItemName() + " $" + products.getValue().getPrice());
-                int updatedQuantity = products.getValue().getQuantity();
                 updatedQuantity--;
-                System.out.println( updatedQuantity);
+                //System.out.println(updatedQuantity);
+
+                purchaseTracker.put(selectedProductKey, updatedQuantity);
+                System.out.println(purchaseTracker);
+
+                break;
+            } else if (selectedProductKey.equals(products.getKey()) && updatedQuantity == 0) {
+                System.out.println("SOLD OUT");
                 break;
             } else if (selectedProductKey.equalsIgnoreCase("cancel")) {
                 break;
             }
+
 
         }
         return null;
@@ -134,12 +144,7 @@ public class VendingMachine {
     }
 
 
-
-
-
 }
-
-
 
 
 

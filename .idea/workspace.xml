@@ -43,7 +43,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../joseph-stephens-student-code/module-1/08_Collections_Part_2_Maps/tutorial" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="Application.AnotherVendingMachineCLI">
+  <component name="RunManager" selected="Application.VendingMachineCLI">
     <configuration name="AnotherVendingMachineCLI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.techelevator.AnotherVendingMachineCLI" />
       <module name="m1-java-capstone-vending-machine" />
@@ -85,8 +85,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AnotherVendingMachineCLI" />
         <item itemvalue="Application.VendingMachineCLI" />
+        <item itemvalue="Application.AnotherVendingMachineCLI" />
         <item itemvalue="Application.VendingMachine" />
       </list>
     </recent_temporary>
@@ -101,20 +101,5 @@
       <updated>1654781957657</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java</url>
-          <line>20</line>
-          <properties class="com.techelevator.VendingMachineCLI" method="run">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

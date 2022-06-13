@@ -3,6 +3,8 @@ package com.techelevator;
 import com.techelevator.view.Menu;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -13,6 +15,7 @@ public class VendingMachineCLI {
 	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE };
 
 	private Menu menu;
+	List<String> purchasedItemTracker = new ArrayList<>();
 
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
@@ -36,57 +39,55 @@ public class VendingMachineCLI {
 				}
 
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
+				vendingMachine.getProductDisplay();
 
 
-
-
+				String wantMore = "Y";
 				// do purchase
-				System.out.println("");
-				System.out.println("Current Money Provided: " + vendingMachine.getCurrentMoney());
-				System.out.println("");
-				System.out.println( "1)" + " Feed Money");
-				System.out.println( "2)" + " Select Product");
-				System.out.println( "3)" + " Finish Transaction");
-				System.out.println(" ");
-				System.out.print("Please choose an option >>> ");
+				do {
+					System.out.println("");
+					System.out.println("Current Money Provided: " + vendingMachine.getCurrentMoney());
+					System.out.println("");
+					System.out.println("1)" + " Feed Money");
+					System.out.println("2)" + " Select Product");
+					System.out.println("3)" + " Finish Transaction");
+					System.out.println(" ");
+					System.out.print("Please choose an option >>> ");
 
-				// Get User Input
-				Scanner userInput = new Scanner(System.in);
-				String transactionChoice = userInput.nextLine();
+					// Get User Input
+					Scanner userInput = new Scanner(System.in);
+					String transactionChoice = userInput.nextLine();
+
+					if (transactionChoice.equals("1")) {
+						System.out.println("Please input money:  ONE , FIVE , TEN , TWENTY ");
+						String feedMoney = userInput.nextLine().toUpperCase();
 
 
-				if(transactionChoice.equals("1")) {
-					System.out.println("Please input money:  ONE , FIVE , TEN , TWENTY ");
-					String feedMoney = userInput.nextLine().toUpperCase();
+						vendingMachine.moneyFeed(feedMoney.toUpperCase());
+						System.out.println("New Balance is " + vendingMachine.getCurrentMoney());
 
+					} else if (transactionChoice.equals("2")) {
 
-					vendingMachine.moneyFeed(feedMoney.toUpperCase());
-					System.out.println("New Balance is " + vendingMachine.getCurrentMoney());
+						vendingMachine.getProductDisplay();
+
+					} else if (transactionChoice.equals("3")) {
+
 					}
+					else{
+						System.out.println("Please enter a valid choice!");}
 
+					System.out.println("Do you want to make another purchase? (Y/N)");
+					wantMore = userInput.nextLine();
 
-				else if( transactionChoice.equals("2"))
-				{
-
-					vendingMachine.getProductDisplay();
-
-				}
-				else if( transactionChoice.equals("3"))
-				{
-
-				}
-				else
-				{
-					System.out.println("Please enter a valid choice!");
-				}
-
+				} while(wantMore.equalsIgnoreCase("Y"));
 			}
 		}
+
 	}
 
 	public static void main(String[] args) {
 		Menu menu = new Menu(System.in, System.out);
-		VendingMachineCLI cli = new VendingMachineCLI(menu);
+		AnotherVendingMachineCLI cli = new AnotherVendingMachineCLI(menu);
 		cli.run();
 	}
 }
