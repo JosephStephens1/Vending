@@ -40,10 +40,10 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../joseph-stephens-student-code/module-1/08_Collections_Part_2_Maps/tutorial" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="Application.VendingMachineCLI">
+  <component name="RunManager" selected="Application.AnotherVendingMachineCLI">
     <configuration name="AnotherVendingMachineCLI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.techelevator.AnotherVendingMachineCLI" />
       <module name="m1-java-capstone-vending-machine" />
@@ -85,8 +85,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.VendingMachineCLI" />
         <item itemvalue="Application.AnotherVendingMachineCLI" />
+        <item itemvalue="Application.VendingMachineCLI" />
         <item itemvalue="Application.VendingMachine" />
       </list>
     </recent_temporary>

@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import static java.lang.System.exit;
+
 public class AnotherVendingMachine {
 
     private BigDecimal currentMoney = new BigDecimal("0.00");
@@ -103,6 +105,7 @@ public class AnotherVendingMachine {
     private Map<String, Integer> purchaseTracker = new HashMap<>();
 
 
+
     public String getProductDisplay() {
 
         System.out.println("");
@@ -117,34 +120,43 @@ public class AnotherVendingMachine {
         String selectedProductKey = userInput.nextLine();
 
 
-        for (Map.Entry<String, VendingItems> products : getItems().entrySet()) {
 
 
-            if (selectedProductKey.equals(products.getKey()) && updatedQuantity >= 2) {
-
-                System.out.println(products.getValue().getItemName() + " $" + products.getValue().getPrice());
+            if (items.containsKey(selectedProductKey) && updatedQuantity >= 0) {
+                System.out.println(items.get(selectedProductKey).getItemName() + " $" + items.get(selectedProductKey).getPrice());
                 updatedQuantity--;
-                //System.out.println(updatedQuantity);
+                if (items.containsKey(selectedProductKey) && updatedQuantity <= 0) {
+                    System.out.println("SOLD OUT");
+                } else {
+                    System.out.println(updatedQuantity);
 
-                purchaseTracker.put(selectedProductKey, updatedQuantity);
-                System.out.println(purchaseTracker);
+                    purchaseTracker.put(selectedProductKey, updatedQuantity);
+                    System.out.println(purchaseTracker);
 
-                break;
-            } else if (selectedProductKey.equals(products.getKey()) && updatedQuantity == 0) {
-                System.out.println("SOLD OUT");
-                break;
-            } else if (selectedProductKey.equalsIgnoreCase("cancel")) {
-                break;
+                    if(items.get(selectedProductKey).getItemType().equals("Chip")){  System.out.println("Crunch, Crunch, Crunch!");}
+                    if(items.get(selectedProductKey).getItemType().equals("Candy")){  System.out.println("Munch, Munch, Mmm-Good!");}
+                    if(items.get(selectedProductKey).getItemType().equals("Drink")){  System.out.println("Cheers, Glug, Glug!");}
+                    if(items.get(selectedProductKey).getItemType().equals("Gum")){  System.out.println("Chew, Chew, Pop!");}
+
+                }
+
+
             }
 
 
-        }
-        return null;
 
+
+           /* if(products.getValue().getItemType().equals("Chips")){
+                System.out.println("Crunch, Crunch, Crunch");
+            } */
+        return null;
     }
 
 
 }
+
+
+
 
 
 

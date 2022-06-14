@@ -120,7 +120,7 @@ public class VendingMachine {
         for (Map.Entry<String, VendingItems> products : getItems().entrySet()) {
 
 
-            if (selectedProductKey.equals(products.getKey()) && updatedQuantity >= 2) {
+            if (selectedProductKey.equals(products.getKey()) && updatedQuantity >= 1) {
 
                 System.out.println(products.getValue().getItemName() + " $" + products.getValue().getPrice());
                 updatedQuantity--;
