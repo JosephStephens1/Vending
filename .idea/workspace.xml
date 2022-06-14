@@ -43,7 +43,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="Application.AnotherVendingMachineCLI">
+  <component name="RunManager" selected="Application.VendingMachineCLI">
     <configuration name="AnotherVendingMachineCLI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.techelevator.AnotherVendingMachineCLI" />
       <module name="m1-java-capstone-vending-machine" />
@@ -85,8 +85,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AnotherVendingMachineCLI" />
         <item itemvalue="Application.VendingMachineCLI" />
+        <item itemvalue="Application.AnotherVendingMachineCLI" />
         <item itemvalue="Application.VendingMachine" />
       </list>
     </recent_temporary>
